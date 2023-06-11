@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react'
+import React, { useState, useEffect } from 'react'
 import axios from 'axios';
 const SeatBooking = () => {
     let arr = [
@@ -19,17 +19,17 @@ const SeatBooking = () => {
     const [seats, setSeats] = useState(arr);
     const [message, setMessage] = useState('');
     const resetSeat = async () => {
-        await axios.post("http://localhost:8000/train/reset");
+        await axios.post("https://spotless-mite-bell-bottoms.cyclic.app/train/reset");
     }
     const reserveSeat = async (number) => {
-        const result = await axios.post("http://localhost:8000/train/book", { number: number });
+        const result = await axios.post("https://spotless-mite-bell-bottoms.cyclic.app/train/book", { number: number });
         setSeats(result.data.data);
         setMessage(result.data.msg);
     }
     useEffect(() => {
         resetSeat();
     }, [])
-    
+
     const handleSubmit = (e) => {
         e.preventDefault();
         console.log(number);
@@ -43,18 +43,18 @@ const SeatBooking = () => {
                     seats.map((ele, i) => {
                         return (
                             ele.map((item, j) => {
-                                return(
+                                return (
                                     <div className="boxElement">{item}</div>
                                 )
-                            })    
-                        )       
+                            })
+                        )
                     })
                 }
             </div>
-            <form onSubmit={ handleSubmit}>
+            <form onSubmit={handleSubmit}>
                 <input type="text" onChange={(e) => setNumber(e.target.value)} />
                 <button>Submit</button>
-                <div>{ message}</div>
+                <div>{message}</div>
             </form>
         </>
     )
