@@ -19,12 +19,17 @@ const SeatBooking = () => {
     const [seats, setSeats] = useState(arr);
     const [message, setMessage] = useState('');
     const resetSeat = async () => {
-        await axios.post("https://spotless-mite-bell-bottoms.cyclic.app/train/reset");
+        // await axios.post("https://spotless-mite-bell-bottoms.cyclic.app/train/reset");
+        await axios.post("http://localhost:8080/train/reset");
+        setSeats(arr);
+        // setNumber('');
     }
     const reserveSeat = async (number) => {
-        const result = await axios.post("https://spotless-mite-bell-bottoms.cyclic.app/train/book", { number: number });
+        // const result = await axios.post("https://spotless-mite-bell-bottoms.cyclic.app/train/book", { number: number });
+        const result = await axios.post("http://localhost:8080/train/book", { number: number });
         setSeats(result.data.data);
         setMessage(result.data.msg);
+        // setNumber('');
     }
     useEffect(() => {
         resetSeat();
@@ -54,6 +59,7 @@ const SeatBooking = () => {
             <form onSubmit={handleSubmit}>
                 <input type="text" onChange={(e) => setNumber(e.target.value)} />
                 <button>Submit</button>
+                <button type="button" onClick={resetSeat}>Reset</button>
                 <div>{message}</div>
             </form>
         </>
