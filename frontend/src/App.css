@@ -38,13 +38,19 @@
 }
 
 .box {
-  display: grid;
-  grid-template-columns: repeat(7, 20px);
-  gap:10px;
+  width: 50%;
+  margin: auto;
 }
 
 .boxElement {
-  border: 1px solid red;
+  border: 1px solid rgb(0, 255, 153);
   height: 20px;
   width: 20px;
+}
+.smallBox {
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(7, 20px);
+  gap: 10px;
+  width: 30%;
 }

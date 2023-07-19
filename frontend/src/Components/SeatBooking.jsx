@@ -40,22 +40,27 @@ const SeatBooking = () => {
         console.log(number);
         reserveSeat(number);
     }
+
     return (
         <>
-            <div>SeatBooking</div>
+
+            <div><strong>SeatBookingApp</strong></div>
             <div className="box">
-                {
-                    seats.map((ele, i) => {
-                        return (
-                            ele.map((item, j) => {
-                                return (
-                                    <div className="boxElement">{item}</div>
-                                )
-                            })
-                        )
-                    })
-                }
-            </div>
+                <div className="smallBox">
+                    {
+
+                        seats.map((ele, i) => {
+                            return (
+                                ele.map((item, j) => {
+                                    return (
+                                        <div className="boxElement" style={item === 0 ? { backgroundColor: "green" } : { backgroundColor: "red" }}> {''}</div>
+                                    )
+                                })
+                            )
+                        })
+                    }
+                </div>
+            </div >
             <form onSubmit={handleSubmit}>
                 <input type="text" onChange={(e) => setNumber(e.target.value)} />
                 <button>Submit</button>

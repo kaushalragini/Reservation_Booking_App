@@ -1,6 +1,5 @@
-import logo from './logo.svg';
-import './App.css';
-import SeatBooking from './Components/SeatBooking';
+import "./App.css";
+import SeatBooking from "./Components/SeatBooking";
 
 function App() {
   return (
